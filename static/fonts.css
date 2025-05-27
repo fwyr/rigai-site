@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+
+.honk-font {
+    font-family: "Honk", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "MORF" 15,
+      "SHLN" 50;
+  }

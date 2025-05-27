@@ -1,7 +1,8 @@
 <script>
     import { T, useTask } from '@threlte/core'
-    import { interactivity } from '@threlte/extras'
+    import { interactivity, GLTF } from '@threlte/extras'
     import { Spring } from 'svelte/motion'
+    
 
     interactivity()
     const scale = new Spring(1)
@@ -13,6 +14,8 @@
     useTask((delta) => {
         rotation += delta
     })
+
+    const secretsauceScale = new Spring(30)
 </script>
 
 <!--
@@ -65,3 +68,23 @@ possible to set rotation/position = {[x, y, z]}
     <T.CircleGeometry args={[4, 40]} />
     <T.MeshStandardMaterial color="white" />
 </T.Mesh>
+
+
+<!-- secret sauce -->
+
+<!-- <T.Mesh
+    rotation.y={rotation*1000}
+    position={[0, 0, 0]}
+    scale={secretsauceScale.current}
+    onpointerenter={() => secretsauceScale.target = 50}
+    onpointerleave={() => secretsauceScale.target = 30}
+    castShadow
+    
+>
+
+    <GLTF
+        url="/secretsauce.glb"
+        scale={1}
+        on:error={(e) => console.error(e)}
+    />
+</T.Mesh> -->
