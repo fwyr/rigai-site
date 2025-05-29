@@ -1,13 +1,14 @@
 import { writable } from 'svelte/store';
-export const isFirstPrompt = writable(true);
+export const noExistingPrompt = writable(true);
 export const isAwaitingResponse = writable(false);
+export const currentDisplayingSubmissionID = writable(-1);
 export const submissions = writable<Array<Record<string, any>>>([]);
 
-interface ComponentSelection {
+export interface ComponentSelection {
     id: number;
     name: string;
     price: number;
-}
+};
 
 export interface Selections {
     cpu: ComponentSelection;
@@ -15,7 +16,7 @@ export interface Selections {
     storage: ComponentSelection;
     memory: ComponentSelection;
     motherboard: ComponentSelection;
-}
+};
 
 export const selectedComponents = writable<Selections>({
     cpu: null,
@@ -24,6 +25,8 @@ export const selectedComponents = writable<Selections>({
     memory: null,
     motherboard: null,
 });
+
+
 
 
 // sample response:

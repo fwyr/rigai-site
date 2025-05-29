@@ -2,7 +2,7 @@
     import { Canvas } from '@threlte/core'
     import Scene from '$lib/Scene.svelte'
     import InputOutputBar from '$lib/InputOutputBar.svelte';
-    import { isAwaitingResponse, isFirstPrompt } from '$lib/stores';
+    import { isAwaitingResponse, noExistingPrompt } from '$lib/stores';
     // const awaiting = $derived(() => $isAwaitingResponse);
     // let response = $state("");
 </script>
@@ -14,7 +14,7 @@
         <div id="render-container">
             <!-- <p>isAwaitingResponse: {$isAwaitingResponse}</p> -->
 
-            {#if !$isFirstPrompt}
+            {#if !$noExistingPrompt}
               {#if $isAwaitingResponse} <!-- debug -->
                 <span id="loading-indicator" class="loader"></span>
               {:else}
@@ -23,7 +23,7 @@
                 </Canvas>
               {/if}
             {:else}
-              <p style="text-align:center; font-size: x-large;">Input your first prompt to begin!</p>
+              <p style="text-align:center; font-size: x-large;">Input a prompt to begin.</p>
             {/if}
 
 

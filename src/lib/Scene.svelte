@@ -15,7 +15,7 @@
         rotation += delta
     })
 
-    const secretsauceScale = new Spring(30)
+    const secretsauceScale = new Spring(1)
 </script>
 
 <!--
@@ -24,7 +24,7 @@ coordinates are X (left-right), Y (up-down), Z (front-back)
 
 <T.PerspectiveCamera 
     makeDefault 
-    position={[7, 7, 7]}
+    position={[10, 10, 20]}
     oncreate={(ref) => {
         ref.lookAt(0, 1, 0)
     }}
@@ -44,7 +44,7 @@ possible to set rotation/position = {[x, y, z]}
 -->
 
 <!-- cuboid mesh -->
-<T.Mesh 
+<!-- <T.Mesh 
     rotation.y={rotation}
     position.y={1}
     scale={scale.current}
@@ -58,33 +58,36 @@ possible to set rotation/position = {[x, y, z]}
 >
     <T.BoxGeometry args={[1,2,1]}/>
     <T.MeshStandardMaterial color="hotpink" />
-</T.Mesh>
+</T.Mesh> -->
 
 <!-- circular floor mesh -->
 <T.Mesh
+    position={[0,-2,0]}
     rotation.x={-Math.PI / 2}
     receiveShadow
 >
-    <T.CircleGeometry args={[4, 40]} />
+    <T.CircleGeometry args={[10,40]} />
     <T.MeshStandardMaterial color="white" />
 </T.Mesh>
 
 
 <!-- secret sauce -->
 
-<!-- <T.Mesh
-    rotation.y={rotation*1000}
+<!-- onpointerenter={() => secretsauceScale.target = 1.5} -->
+<!-- onpointerleave={() => secretsauceScale.target = 1.5} -->
+
+<T.Mesh
     position={[0, 0, 0]}
     scale={secretsauceScale.current}
-    onpointerenter={() => secretsauceScale.target = 50}
-    onpointerleave={() => secretsauceScale.target = 30}
+
     castShadow
     
 >
 
     <GLTF
-        url="/secretsauce.glb"
-        scale={1}
+        url="/pc1.glb"
+        scale={0.5}
+        rotation.y={rotation}
         on:error={(e) => console.error(e)}
     />
-</T.Mesh> -->
+</T.Mesh>
